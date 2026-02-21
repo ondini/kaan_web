@@ -1,0 +1,27 @@
+{
+  "categories": {
+    "interiors": [
+      "img1_ahoj.jpeg",
+      "img2_pepina.jpeg"
+    ],
+    "public": [
+      "img3_chleba.jpeg"
+    ],
+    "residetail": [
+      "IMG-20241024-WA0002.jpg"
+    ],
+    "urbanism": [
+      "WhatsApp Image 2025-11-26 at 21.28.15.jpeg"
+    ]
+  },
+  "homeOrder": [
+    "interiors/img1_ahoj.jpeg",
+    "residetail/IMG-20241024-WA0002.jpg",
+    "public/img3_chleba.jpeg"
+  ],
+  "descriptions": {
+    "interiors/img1_ahoj.jpeg": "Dobnerova, Olomouc",
+    "residetail/IMG-20241024-WA0002.jpg": "Klobasky a parecek",
+    "public/img3_chleba.jpeg": "Tvoje m\u00e1ma"
+  }
+}

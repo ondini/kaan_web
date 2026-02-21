@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAAN Architekti</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="assets/logo.png" alt="KAAN" class="logo-image">
+                </div>
+
+                <!-- Projects Section -->
+                <nav class="nav-section">
+                    <h2 class="section-title"><a href="#/" class="projects-title-link projects-title">PROJEKTY</a></h2>
+                    <ul class="nav-list">
+                        <li><a href="#/residential" class="project-link" data-category="residential">Rezidenční</a></li>
+                        <li><a href="#/interior" class="project-link" data-category="interior">Interiéry</a></li>
+                        <li><a href="#/urbanism" class="project-link" data-category="urbanism">Urbanismus</a></li>
+                        <li><a href="#/public" class="project-link" data-category="public">Veřejné</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact Section -->
+                <nav class="nav-section">
+                    <h2 class="section-title"><a href="#/contact" class="nav-link" data-page="contact">KONTAKT</a></h2>
+                </nav>
+
+                <!-- Info Section -->
+                <nav class="nav-section">
+                    <h2 class="section-title"><a href="#/info" class="nav-link" data-page="info">INFO</a></h2>
+                </nav>
+            </div>
+
+            <!-- Footer in Sidebar -->
+            <div class="sidebar-footer">
+                <a href="mailto:info@kaanarchitekti.cz" class="email">info@kaanarchitekti.cz</a>
+                <div class="social-links">
+                    <a href="#instagram" class="social-icon" title="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                        </svg>
+                    </a>
+                    <a href="#linkedin" class="social-icon" title="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path>
+                        </svg>
+                    </a>
+                    <a href="#facebook" class="social-icon" title="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Gallery Page -->
+            <div id="gallery-page" class="page-content active">
+                <h1 class="gallery-title is-hidden" id="gallery-title"></h1>
+                <div class="gallery" id="gallery"></div>
+            </div>
+
+            <!-- Contact Page -->
+            <div id="contact-page" class="page-content">
+                <div class="contact-container">
+                    <h1 class="contact-title">– Kontakt</h1>
+                    <img src="assets/images/contact.jpg" alt="KAAN Studio" class="contact-image">
+                    
+                    <div class="contact-text">
+                        <p><strong>Address:</strong><br>
+                        Lorenzo Zandri Studio<br>
+                        1 Bodney Road Unit 2<br>
+                        London E8 1AY</p>
+
+                        <p><strong>Phone Number:</strong><br>
+                        +44 (0) 7745 007486</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Page -->
+            <div id="info-page" class="page-content">
+                <div class="contact-container">
+                    <h1 class="contact-title">– Info</h1>
+                    <img src="assets/images/info.jpg" alt="Info" class="contact-image">
+                    
+                    <div class="contact-text">
+                        <p>Navrhujeme projekty různých měřítek – od interiéru přes rodinné domy až po komerční, veřejné stavby a urbanismus. Důležitý je pro nás dialog s klientem, který provází celý proces od prvních úvah až po realizaci.</p>
+
+                        <p>Hledáme čistá, funkční a nadčasová řešení s důrazem na detail, kontext a kvalitu provedení. Pracujeme s respektem k místu, lidskému měřítku i rozpočtu projektu. Spojujeme racionální přístup s citlivostí a smyslem pro atmosféru.</p>
+
+                        <p>Klientům jsme partnerem i průvodcem – pomáháme formulovat zadání, koordinujeme projekt a dohlížíme na realizaci tak, aby výsledek měl dlouhodobou hodnotu a přirozeně sloužil svému účelu.</p>
+
+                        <blockquote class="contact-quote">
+                            „Architektura pro mě spojuje funkci a estetiku a vytváří prostředí, ve kterém se lidé cítí dobře a prožívají prostor všemi smysly."
+                        </blockquote>
+
+                        <p class="contact-bio"><strong>Anastázie Můčková</strong>, absolventka Fakulty architektury ČVUT v Praze. Během studia absolvovala zahraniční pobyt na Lund Universitě ve Švédsku, kde si rozšířila pohled na architektonickou tvorbu v mezinárodním kontextu. Profesní zkušenosti sbírala už během studia a po něm v různých ateliérech v Praze i v Portugalsku, kde působila v ateliéru japonského architekta. Studium i zahraniční pobyty formovaly její profesní směřování a cit pro detail, kontext a práci s prostorem.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const PAGE_KEYS = ['contact', 'info'];
+        const CATEGORY_KEYS = ['residential', 'interior', 'urbanism', 'public'];
+        const CATEGORY_LABELS = {
+            residential: 'Rezidenční',
+            interior: 'Interiéry',
+            urbanism: 'Urbanismus',
+            public: 'Veřejné'
+        };
+        const CATEGORY_MAP = {
+            residential: 'residetail',
+            interior: 'interiors',
+            urbanism: 'urbanism',
+            public: 'public'
+        };
+
+        let galleryData = null;
+        let allImages = [];
+
+        function setActiveNavLink(selector, activeKey) {
+            document.querySelectorAll(selector).forEach(link => {
+                link.classList.remove('active');
+            });
+            if (activeKey) {
+                const activeLink = document.querySelector(selector + '[data-' + activeKey.attr + '="' + activeKey.value + '"]');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        }
+
+        function setProjectsTitleActive(isActive) {
+            const title = document.querySelector('.projects-title-link');
+            if (!title) {
+                return;
+            }
+            title.classList.toggle('active', isActive);
+        }
+
+        function setGalleryTitle(filterKey) {
+            const title = document.getElementById('gallery-title');
+            if (!title) {
+                return;
+            }
+            if (!filterKey) {
+                title.textContent = '';
+                title.classList.add('is-hidden');
+                return;
+            }
+            const label = CATEGORY_LABELS[filterKey] || filterKey;
+            title.textContent = '– ' + label;
+            title.classList.remove('is-hidden');
+        }
+
+        function showPage(pageKey) {
+            document.querySelectorAll('.page-content').forEach(p => {
+                p.classList.remove('active');
+            });
+            document.getElementById(pageKey + '-page').classList.add('active');
+            setActiveNavLink('.nav-link', { attr: 'page', value: pageKey });
+            setActiveNavLink('.project-link', null);
+            setProjectsTitleActive(false);
+        }
+
+        function renderGallery(images) {
+            const gallery = document.getElementById('gallery');
+            if (!gallery) {
+                return;
+            }
+            gallery.innerHTML = images.map(item => {
+                const src = 'assets/images/' + item.folder + '/' + encodeURIComponent(item.file);
+                const key = item.folder + '/' + item.file;
+                const description = (galleryData.descriptions && galleryData.descriptions[key]) || '';
+                
+                let html = '<div class="gallery-item">';
+                html += '<img src="' + src + '" alt="Project" class="gallery-image">';
+                if (description) {
+                    html += '<div class="gallery-description">' + description + '</div>';
+                }
+                html += '</div>';
+                return html;
+            }).join('');
+        }
+
+        function showGallery(filterKey) {
+            document.querySelectorAll('.page-content').forEach(p => {
+                p.classList.remove('active');
+            });
+            document.getElementById('gallery-page').classList.add('active');
+            setActiveNavLink('.nav-link', null);
+            setActiveNavLink('.project-link', filterKey ? { attr: 'category', value: filterKey } : null);
+            setProjectsTitleActive(!filterKey);
+            setGalleryTitle(filterKey);
+
+            if (!galleryData) {
+                return;
+            }
+
+            if (!filterKey) {
+                renderGallery(allImages);
+                return;
+            }
+
+            const folder = CATEGORY_MAP[filterKey];
+            const files = (galleryData.categories[folder] || []).map(file => ({
+                folder,
+                file
+            }));
+            renderGallery(files);
+        }
+
+        function buildAllImages() {
+            const folderOrder = ['residetail', 'interiors', 'urbanism', 'public'];
+            const images = [];
+            const seen = new Set();
+
+            if (Array.isArray(galleryData.homeOrder)) {
+                galleryData.homeOrder.forEach(entry => {
+                    const parts = entry.split('/');
+                    if (parts.length < 2) {
+                        return;
+                    }
+                    const folder = parts[0];
+                    const file = parts.slice(1).join('/');
+                    const files = galleryData.categories[folder] || [];
+                    if (files.includes(file)) {
+                        const key = folder + '/' + file;
+                        if (!seen.has(key)) {
+                            seen.add(key);
+                            images.push({ folder, file });
+                        }
+                    }
+                });
+            }
+
+            folderOrder.forEach(folder => {
+                const files = galleryData.categories[folder] || [];
+                files.forEach(file => {
+                    const key = folder + '/' + file;
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        images.push({ folder, file });
+                    }
+                });
+            });
+            return images;
+        }
+
+        function updateHash(value) {
+            window.location.hash = value ? '#/' + value : '';
+        }
+
+        function handleHash() {
+            const hash = window.location.hash.slice(2);
+            if (PAGE_KEYS.includes(hash)) {
+                showPage(hash);
+                return;
+            }
+            if (CATEGORY_KEYS.includes(hash)) {
+                showGallery(hash);
+                return;
+            }
+            showGallery(null);
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('data-page');
+                updateHash(page);
+            });
+        });
+
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.getAttribute('data-category');
+                updateHash(category);
+            });
+        });
+
+        document.querySelector('.logo').addEventListener('click', function() {
+            updateHash('');
+        });
+
+        document.querySelector('.projects-title-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            updateHash('');
+        });
+
+        window.addEventListener('hashchange', handleHash);
+
+        fetch('assets/images/gallery.json')
+            .then(response => response.json())
+            .then(data => {
+                galleryData = data;
+                allImages = buildAllImages();
+                handleHash();
+            })
+            .catch(() => {
+                showGallery(null);
+            });
+    </script>
+</body>
+</html>
