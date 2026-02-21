@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">+</button>
     <div class="container">
         <!-- Left Sidebar -->
         <aside class="sidebar">
@@ -283,6 +284,7 @@
                 e.preventDefault();
                 const page = this.getAttribute('data-page');
                 updateHash(page);
+                closeMobileMenu();
             });
         });
 
@@ -291,19 +293,33 @@
                 e.preventDefault();
                 const category = this.getAttribute('data-category');
                 updateHash(category);
+                closeMobileMenu();
             });
         });
 
         document.querySelector('.logo').addEventListener('click', function() {
             updateHash('');
+            closeMobileMenu();
         });
 
         document.querySelector('.projects-title-link').addEventListener('click', function(e) {
             e.preventDefault();
             updateHash('');
+            closeMobileMenu();
         });
 
         window.addEventListener('hashchange', handleHash);
+
+        // Mobile menu functionality
+        function closeMobileMenu() {
+            document.body.classList.remove('mobile-menu-open');
+        }
+
+        function toggleMobileMenu() {
+            document.body.classList.toggle('mobile-menu-open');
+        }
+
+        document.getElementById('mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
 
         fetch('assets/images/gallery.json')
             .then(response => response.json())

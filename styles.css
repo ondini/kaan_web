@@ -60,6 +60,34 @@ body {
     overflow: hidden;
 }
 
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: auto;
+    height: auto;
+    background: transparent;
+    border: none;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-text);
+    cursor: pointer;
+    z-index: 1000;
+    padding: 0;
+    font-family: var(--font-family);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    opacity: 0.7;
+}
+
+.mobile-menu-open .mobile-menu-toggle {
+    transform: rotate(45deg);
+}
+
 .container {
     display: flex;
     width: 100%;
@@ -367,18 +395,39 @@ body {
         --nav-section-gap: 30px;
     }
 
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .container {
         flex-direction: column;
     }
 
     .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-height: auto;
+        height: 100vh;
+        z-index: 999;
+        transform: translateX(-100%);
+        overflow: hidden;
         justify-content: flex-start;
+    }
+
+    .mobile-menu-open .sidebar {
+        transform: translateX(0);
+    }
+
+    .mobile-menu-open {
+        overflow: hidden;
     }
 
     .main-content {
         width: 100%;
         overflow-x: hidden;
+        padding-top: 100px;
     }
 }
