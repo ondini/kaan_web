@@ -13,9 +13,9 @@
 }
 
 :root {
-    --color-text: #1a1a1a;
+    --color-text: #40312c;
     --color-bg: #ffffff;
-    --color-accent: #fa7b2c;
+    --color-accent: #db4a2b;
     --color-scrollbar: #c0c0c0;
     --color-scrollbar-hover: #a0a0a0;
     --font-family: 'Inter', sans-serif;
@@ -96,7 +96,7 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 40%;
+    width: 50%;
     background: var(--color-bg);
     padding: var(--sidebar-padding);
     display: flex;
@@ -381,7 +381,7 @@ body {
     }
 
     .sidebar {
-        width: 35%;
+        width: 40%;
     }
 
 }

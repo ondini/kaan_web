@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+from typing import Optional
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 IMAGES_DIR = ROOT_DIR / "assets" / "images"
@@ -33,7 +34,7 @@ def read_order_file() -> list[tuple[str, str]]:
     return entries
 
 
-def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> str | None:
+def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> Optional[str]:
     if "/" in entry:
         folder, filename = entry.split("/", 1)
         if folder in categories:
@@ -78,6 +79,7 @@ def main() -> None:
     
     for basename, description in order_entries:
         normalized = normalize_order_entry(basename, categories)
+        print(f"Normalized '{basename}' to '{normalized}' with description '{description}'")
         if normalized:
             home_order.append(normalized)
             if description:
