@@ -1,0 +1,3 @@
+# No external dependencies required for `generate_gallery.py`
+# Uses standard library only but requires Python >= 3.9 for PEP 585 built-in generics.
+# If you add packages later, list them here (one per line).

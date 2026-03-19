@@ -1,27 +1,95 @@
 {
   "categories": {
     "interiors": [
-      "img1_ahoj.jpeg",
-      "img2_pepina.jpeg"
+      "a_byt_Stodulky_1.png",
+      "a_byt_Stodulky_2.png",
+      "a_byt_Stodulky_3.png",
+      "a_byt_Stodulky_4.png",
+      "byt_Maly_Brevnov_1.png",
+      "byt_Maly_Brevnov_2.png",
+      "byt_Tabulovy_vrch_1.png",
+      "byt_Tabulovy_vrch_11.png",
+      "byt_Tabulovy_vrch_12.png",
+      "byt_Tabulovy_vrch_13.png",
+      "byt_Tabulovy_vrch_3.png",
+      "byt_Tabulovy_vrch_4.png",
+      "byt_Tabulovy_vrch_6.jpg"
     ],
-    "public": [
-      "img3_chleba.jpeg"
-    ],
-    "residetail": [
-      "IMG-20241024-WA0002.jpg"
+    "residential": [
+      "RD_Dobnerova_1.png",
+      "RD_Dobnerova_2.png",
+      "RD_Dobnerova_3.png",
+      "RD_Zesov_1.png",
+      "RD_Zesov_2.png",
+      "RD_Zesov_3.png",
+      "stodola_Jivova_1.png",
+      "stodola_Jivova_2.png",
+      "stodola_Jivova_3.png",
+      "stodola_Jivova_4.png"
     ],
     "urbanism": [
-      "WhatsApp Image 2025-11-26 at 21.28.15.jpeg"
+      "urbanismus_Dolni_Zleb_1.png",
+      "urbanismus_Dolni_Zleb_2.png",
+      "urbanismus_Dolni_Zleb_3.png",
+      "urbanismus_Dolni_Zleb_4.png"
     ]
   },
   "homeOrder": [
-    "interiors/img1_ahoj.jpeg",
-    "residetail/IMG-20241024-WA0002.jpg",
-    "public/img3_chleba.jpeg"
+    "residential/stodola_Jivova_1.png",
+    "urbanism/urbanismus_Dolni_Zleb_1.png",
+    "interiors/a_byt_Stodulky_1.png",
+    "interiors/byt_Tabulovy_vrch_13.png",
+    "interiors/byt_Maly_Brevnov_1.png",
+    "residential/RD_Dobnerova_1.png",
+    "residential/stodola_Jivova_2.png",
+    "interiors/byt_Tabulovy_vrch_11.png",
+    "residential/RD_Zesov_1.png",
+    "interiors/byt_Tabulovy_vrch_4.png",
+    "interiors/byt_Tabulovy_vrch_1.png",
+    "urbanism/urbanismus_Dolni_Zleb_2.png",
+    "interiors/a_byt_Stodulky_2.png",
+    "residential/RD_Dobnerova_2.png",
+    "residential/stodola_Jivova_4.png",
+    "interiors/byt_Tabulovy_vrch_3.png",
+    "urbanism/urbanismus_Dolni_Zleb_3.png",
+    "interiors/byt_Tabulovy_vrch_6.jpg",
+    "interiors/a_byt_Stodulky_3.png",
+    "residential/RD_Dobnerova_3.png",
+    "interiors/byt_Maly_Brevnov_2.png",
+    "residential/stodola_Jivova_3.png",
+    "residential/RD_Zesov_3.png",
+    "urbanism/urbanismus_Dolni_Zleb_4.png",
+    "interiors/a_byt_Stodulky_4.png",
+    "residential/RD_Zesov_2.png",
+    "interiors/byt_Tabulovy_vrch_12.png"
   ],
   "descriptions": {
-    "interiors/img1_ahoj.jpeg": "Dobnerova, Olomouc",
-    "residetail/IMG-20241024-WA0002.jpg": "Klobasky a parecek",
-    "public/img3_chleba.jpeg": "Tvoje m\u00e1ma"
+    "residential/stodola_Jivova_1.png": "stodola, J\u00edvov\u00e1",
+    "urbanism/urbanismus_Dolni_Zleb_1.png": "urbanismus, Doln\u00ed \u017dleb",
+    "interiors/a_byt_Stodulky_1.png": "byt, Stod\u016flky",
+    "interiors/byt_Tabulovy_vrch_13.png": "byt, Tabulov\u00fd vrch",
+    "interiors/byt_Maly_Brevnov_1.png": "byt, Mal\u00fd B\u0159evnov",
+    "residential/RD_Dobnerova_1.png": "Rodinn\u00fd d\u016fm, Dobnerova",
+    "residential/stodola_Jivova_2.png": "stodola, J\u00edvov\u00e1",
+    "interiors/byt_Tabulovy_vrch_11.png": "byt, Tabulov\u00fd vrch",
+    "residential/RD_Zesov_1.png": "Rodinn\u00fd d\u016fm, \u017de\u0161ov",
+    "interiors/byt_Tabulovy_vrch_4.png": "byt, Tabulov\u00fd vrch",
+    "interiors/byt_Tabulovy_vrch_1.png": "byt, Tabulov\u00fd vrch",
+    "urbanism/urbanismus_Dolni_Zleb_2.png": "urbanismus, Doln\u00ed \u017dleb",
+    "interiors/a_byt_Stodulky_2.png": "byt, Stod\u016flky",
+    "residential/RD_Dobnerova_2.png": "Rodinn\u00fd d\u016fm, Dobnerova",
+    "residential/stodola_Jivova_4.png": "stodola, J\u00edvov\u00e1",
+    "interiors/byt_Tabulovy_vrch_3.png": "byt, Tabulov\u00fd vrch",
+    "urbanism/urbanismus_Dolni_Zleb_3.png": "urbanismus, Doln\u00ed \u017dleb",
+    "interiors/byt_Tabulovy_vrch_6.jpg": "byt, Tabulov\u00fd vrch",
+    "interiors/a_byt_Stodulky_3.png": "byt, Stod\u016flky",
+    "residential/RD_Dobnerova_3.png": "Rodinn\u00fd d\u016fm, Dobnerova",
+    "interiors/byt_Maly_Brevnov_2.png": "byt, Mal\u00fd B\u0159evnov",
+    "residential/stodola_Jivova_3.png": "stodola, J\u00edvov\u00e1",
+    "residential/RD_Zesov_3.png": "Rodinn\u00fd d\u016fm, \u017de\u0161ov",
+    "urbanism/urbanismus_Dolni_Zleb_4.png": "urbanismus, Doln\u00ed \u017dleb",
+    "interiors/a_byt_Stodulky_4.png": "byt, Stod\u016flky",
+    "residential/RD_Zesov_2.png": "Rodinn\u00fd d\u016fm, \u017de\u0161ov",
+    "interiors/byt_Tabulovy_vrch_12.png": "byt, Tabulov\u00fd vrch"
   }
 }
