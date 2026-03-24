@@ -111,6 +111,8 @@
                     </div>
                 </div>
             </div>
+
+            <div class="main-credit">made by AM © 2025</div>
         </main>
     </div>
 
@@ -173,6 +175,7 @@
                 p.classList.remove('active');
             });
             document.getElementById(pageKey + '-page').classList.add('active');
+            document.querySelector('.main-content').scrollTop = 0;
             setActiveNavLink('.nav-link', { attr: 'page', value: pageKey });
             setActiveNavLink('.project-link', null);
             setProjectsTitleActive(false);
@@ -203,6 +206,7 @@
                 p.classList.remove('active');
             });
             document.getElementById('gallery-page').classList.add('active');
+            document.querySelector('.main-content').scrollTop = 0;
             setActiveNavLink('.nav-link', null);
             setActiveNavLink('.project-link', filterKey ? { attr: 'category', value: filterKey } : null);
             setProjectsTitleActive(!filterKey);
@@ -296,6 +300,18 @@
                 closeMobileMenu();
             });
         });
+
+        // Mirror desktop wheel scrolling on the left panel to the right content panel.
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        sidebar.addEventListener('wheel', function(event) {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                return;
+            }
+            mainContent.scrollBy({ top: event.deltaY, left: 0, behavior: 'auto' });
+            event.preventDefault();
+        }, { passive: false });
+        
 
         document.querySelector('.logo').addEventListener('click', function() {
             updateHash('');

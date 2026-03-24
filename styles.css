@@ -38,6 +38,9 @@
     --contact-quote-padding: 20px 0;
     --contact-bio-gap: 40px;
     --scrollbar-width: 8px;
+    --credit-color: #9a9a9a;
+    --credit-size: 13px;
+    --credit-offset: 14px;
     /* Navigation font sizes */
     --section-title-gap: 12px;
     --section-title-size: 21px;
@@ -264,6 +267,8 @@ body {
     overflow-y: scroll;
     background: var(--color-bg);
     padding: var(--main-padding);
+    display: flex;
+    flex-direction: column;
 }
 
 .page-content {
@@ -272,6 +277,17 @@ body {
 
 .page-content.active {
     display: block;
+}
+
+.main-credit {
+    position: static;
+    margin-top: 20px;
+    margin-bottom: var(--credit-offset);
+    align-self: flex-end;
+    text-align: right;
+    font-size: var(--credit-size);
+    color: var(--credit-color);
+    pointer-events: none;
 }
 
 .gallery-title {
