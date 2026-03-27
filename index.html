@@ -163,6 +163,14 @@
         let galleryData = null;
         let allImages = [];
 
+        function setMainContentTitleState(hasTitle) {
+            const mainContent = document.querySelector('.main-content');
+            if (!mainContent) {
+                return;
+            }
+            mainContent.classList.toggle('with-page-title', hasTitle);
+        }
+
         function setActiveNavLink(selector, activeKey) {
             document.querySelectorAll(selector).forEach(link => {
                 link.classList.remove('active');
@@ -203,6 +211,7 @@
                 p.classList.remove('active');
             });
             document.getElementById(pageKey + '-page').classList.add('active');
+            setMainContentTitleState(true);
             document.querySelector('.main-content').scrollTop = 0;
             setActiveNavLink('.nav-link', { attr: 'page', value: pageKey });
             setActiveNavLink('.project-link', null);
@@ -234,6 +243,7 @@
                 p.classList.remove('active');
             });
             document.getElementById('gallery-page').classList.add('active');
+            setMainContentTitleState(Boolean(filterKey));
             document.querySelector('.main-content').scrollTop = 0;
             setActiveNavLink('.nav-link', null);
             setActiveNavLink('.project-link', filterKey ? { attr: 'category', value: filterKey } : null);
