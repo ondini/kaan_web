@@ -242,7 +242,7 @@ body {
 }
 
 .email {
-    font-size: var(--email-size);
+    font-size: 32px;
     color: var(--color-text);
     text-decoration: none;
     font-weight: 800;
@@ -590,10 +590,14 @@ body {
         overflow: hidden;
     }
 
+    .email {
+        font-size: 24px;
+    }
+
     .main-content {
         width: 100%;
         overflow-x: hidden;
-        padding-top: 100px;
+        padding-top: 80px;
     }
 
     .main-content.with-page-title {
