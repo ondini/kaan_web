@@ -361,6 +361,11 @@ body {
     color: var(--color-text);
 }
 
+#info-page .contact-text {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .contact-text p {
     margin-bottom: var(--contact-text-gap);
 }
