@@ -16,6 +16,7 @@
     --color-text: #40312c;
     --color-bg: #ffffff;
     --color-accent: #db4a2b;
+    --color-accent-light: #e57d67;
     --color-scrollbar: #c0c0c0;
     --color-scrollbar-hover: #a0a0a0;
     --font-family: 'Inter', sans-serif;
@@ -41,6 +42,10 @@
     --credit-color: #9a9a9a;
     --credit-size: 13px;
     --credit-offset: 14px;
+    --form-line-color: #1b1b1b;
+    --form-line-width: 2px;
+    --form-muted-color: #7f7f7f;
+    --form-button-text: #ffffff;
     /* Navigation font sizes */
     --section-title-gap: 12px;
     --section-title-size: 21px;
@@ -373,6 +378,111 @@ body {
     font-size: 15px;
 }
 
+.contact-form-section {
+    margin-top: 40px;
+}
+
+.contact-form-title {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 24px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    border: none;
+    border-bottom: var(--form-line-width) solid var(--form-line-color);
+    background: transparent;
+    color: var(--color-text);
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 4px 0 10px;
+    outline: none;
+    border-radius: 0;
+}
+
+.form-field textarea {
+    resize: none;
+    min-height: 160px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-bottom-color: var(--color-accent);
+}
+
+.form-terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: var(--color-text);
+}
+
+.form-terms input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-accent);
+}
+
+.form-terms a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.contact-submit {
+    border: none;
+    background: var(--color-bg);
+    color: var(--color-accent);
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 10px 0;
+    width: auto;
+    align-self: flex-start;
+    text-align: left;
+    border-radius: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.contact-submit:hover {
+    color: var(--color-accent-light);
+}
+
+.form-status {
+    display: none;
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--color-accent);
+}
+
+.form-status.is-visible {
+    display: block;
+}
+
 /* Scrollbar Styling */
 .main-content::-webkit-scrollbar {
     width: var(--scrollbar-width);
@@ -402,6 +512,20 @@ body {
 
     .sidebar {
         width: 40%;
+    }
+
+    .contact-form-title {
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .form-field input,
+    .form-field textarea {
+        font-size: 16px;
+    }
+
+    .contact-submit {
+        font-size: 16px;
     }
 
 }
@@ -450,5 +574,25 @@ body {
         width: 100%;
         overflow-x: hidden;
         padding-top: 100px;
+    }
+
+    .contact-form-title {
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .form-field label {
+        font-size: 18px;
+    }
+
+    .form-field input,
+    .form-field textarea {
+        font-size: 16px;
+        border-bottom-width: var(--form-line-width);
+    }
+
+    .contact-submit {
+        font-size: 16px;
+        border-radius: 16px;
     }
 }

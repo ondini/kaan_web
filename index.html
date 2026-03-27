@@ -24,7 +24,7 @@
                         <li><a href="#/residential" class="project-link" data-category="residential">Rezidenční</a></li>
                         <li><a href="#/interior" class="project-link" data-category="interior">Interiéry</a></li>
                         <li><a href="#/urbanism" class="project-link" data-category="urbanism">Urbanismus</a></li>
-                        <li><a href="#/public" class="project-link" data-category="public">Veřejné</a></li>
+                        <!-- <li><a href="#/public" class="project-link" data-category="public">Veřejné</a></li> -->
                     </ul>
                 </nav>
 
@@ -87,6 +87,34 @@
                         <p><strong>Telefon:</strong><br>
                         +420 728 032 262</p>
                     </div>
+
+                    <section class="contact-form-section" aria-labelledby="contact-form-title">
+                        <h2 id="contact-form-title" class="contact-form-title">Kontaktujte nás</h2>
+                        <form class="contact-form" action="https://formsubmit.co/info@kaanarchitekti.cz" method="post">
+                            <input type="hidden" name="_subject" value="Nova zprava z webu KAAN">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_template" value="table">
+
+                            <div class="form-field">
+                                <label for="contact-name">Jméno</label>
+                                <input id="contact-name" name="name" type="text" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="contact-email">Email</label>
+                                <input id="contact-email" name="email" type="email" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="contact-message">Vaše zpráva</label>
+                                <textarea id="contact-message" name="message" rows="5" required></textarea>
+                            </div>
+
+                            <button type="submit" class="contact-submit">ODESLAT</button>
+                            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                        </form>
+                    </section>
                 </div>
             </div>
 
@@ -112,7 +140,7 @@
                 </div>
             </div>
 
-            <div class="main-credit">made by AM © 2025</div>
+            <div class="main-credit">made by AM © 2026</div>
         </main>
     </div>
 
@@ -336,6 +364,55 @@
         }
 
         document.getElementById('mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
+
+        // Contact form submit without redirect.
+        const contactForm = document.querySelector('.contact-form');
+        const formStatus = document.getElementById('form-status');
+        const submitButton = contactForm ? contactForm.querySelector('.contact-submit') : null;
+        let formStatusHideTimer = null;
+
+        if (contactForm && formStatus && submitButton) {
+            contactForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                formStatus.classList.remove('is-visible');
+                formStatus.textContent = '';
+                if (formStatusHideTimer) {
+                    clearTimeout(formStatusHideTimer);
+                    formStatusHideTimer = null;
+                }
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'ODESILANI...';
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: new FormData(contactForm),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Submission failed');
+                    }
+
+                    contactForm.reset();
+                    formStatus.textContent = 'Zpráva byla úspěšně odeslána.';
+                    formStatus.classList.add('is-visible');
+                } catch (error) {
+                    formStatus.textContent = 'Odeslání se nezdařilo. Zkuste to prosím znovu.';
+                    formStatus.classList.add('is-visible');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'ODESLAT';
+                    formStatusHideTimer = setTimeout(function() {
+                        formStatus.classList.remove('is-visible');
+                        formStatus.textContent = '';
+                    }, 4000);
+                }
+            });
+        }
 
         fetch('assets/images/gallery.json')
             .then(response => response.json())
