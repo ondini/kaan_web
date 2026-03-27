@@ -1,5 +1,7 @@
 from pathlib import Path
 import json
+import shutil
+import subprocess
 from typing import Optional
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -8,6 +10,40 @@ OUTPUT_FILE = IMAGES_DIR / "gallery.json"
 ORDER_FILE = IMAGES_DIR / "img_order.txt"
 
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+
+
+def convert_pngs_to_webp() -> None:
+    """Convert PNG images to WebP and remove original PNG files."""
+    ffmpeg_path = shutil.which("ffmpeg")
+    if not ffmpeg_path:
+        raise RuntimeError("ffmpeg is required but was not found in PATH")
+
+    for folder in sorted(IMAGES_DIR.iterdir()):
+        if not folder.is_dir():
+            continue
+
+        for png_file in sorted(folder.glob("*.png")):
+            webp_file = png_file.with_suffix(".webp")
+            cmd = [
+                ffmpeg_path,
+                "-i",
+                str(png_file),
+                "-vf",
+                "scale=2000:-1",
+                "-compression_level",
+                "3",
+                "-q:v",
+                "96",
+                str(webp_file),
+            ]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode != 0:
+                raise RuntimeError(
+                    f"Failed to convert {png_file} to WebP:\n{result.stderr.strip()}"
+                )
+
+            png_file.unlink()
+            print(f"Converted {png_file.name} -> {webp_file.name}")
 
 
 def read_order_file() -> list[tuple[str, str]]:
@@ -35,12 +71,19 @@ def read_order_file() -> list[tuple[str, str]]:
 
 
 def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> Optional[str]:
+    entry_stem = Path(entry).stem
+
     if "/" in entry:
         folder, filename = entry.split("/", 1)
+        filename_stem = Path(filename).stem
         if folder in categories:
             if filename in categories[folder]:
                 return f"{folder}/{filename}"
-            matches = [file for file in categories[folder] if Path(file).stem == filename]
+            matches = [
+                file
+                for file in categories[folder]
+                if Path(file).stem == filename or Path(file).stem == filename_stem
+            ]
             if len(matches) == 1:
                 return f"{folder}/{matches[0]}"
         return None
@@ -51,7 +94,7 @@ def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> Optio
             matches.append(f"{folder}/{entry}")
             continue
         for file in files:
-            if Path(file).stem == entry:
+            if Path(file).stem == entry or Path(file).stem == entry_stem:
                 matches.append(f"{folder}/{file}")
 
     if len(matches) == 1:
@@ -59,6 +102,8 @@ def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> Optio
     return None
 
 def main() -> None:
+    convert_pngs_to_webp()
+
     categories = {}
     for folder in sorted(IMAGES_DIR.iterdir()):
         if not folder.is_dir():
