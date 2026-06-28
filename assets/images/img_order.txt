@@ -1,24 +1,27 @@
 a_byt_Stodulky_1 - byt, Stodůlky
 urbanismus_Dolni_Zleb_1 - urbanismus, Dolní Žleb
 byt_Tabulovy_vrch_13  - byt, Tabulový vrch
-byt_Maly_Brevnov_1 - byt, Malý Břevnov
+RD_unicov_1 - Rodinný dům, Uničov
+byt_Maly_Brevnov_2 - byt, Malý Břevnov
 RD_Dobnerova_1 - Rodinný dům, Dobnerova
+byt_Italska_1 - byt, Italská
 byt_Tabulovy_vrch_11 - byt, Tabulový vrch
 RD_Zesov_1 - Rodinný dům, Žešov
-byt_Tabulovy_vrch_4 - byt, Tabulový vrch
-byt_Tabulovy_vrch_1 - byt, Tabulový vrch
-urbanismus_Dolni_Zleb_2 - urbanismus, Dolní Žleb
 a_byt_Stodulky_2 - byt, Stodůlky
+byt_Tabulovy_vrch_1 - byt, Tabulový vrch
+byt_Tabulovy_vrch_4 - byt, Tabulový vrch
+urbanismus_Dolni_Zleb_2 - urbanismus, Dolní Žleb
+byt_Italska_2 - byt, Italská
 RD_Dobnerova_2 - Rodinný dům, Dobnerova
 byt_Tabulovy_vrch_3 - byt, Tabulový vrch
 urbanismus_Dolni_Zleb_3 - urbanismus, Dolní Žleb
 byt_Tabulovy_vrch_6 - byt, Tabulový vrch
+RD_unicov_2 - Rodinný dům, Uničov
 a_byt_Stodulky_3 - byt, Stodůlky
 RD_Dobnerova_3 - Rodinný dům, Dobnerova
-byt_Maly_Brevnov_2 - byt, Malý Břevnov
+byt_Maly_Brevnov_1 - byt, Malý Břevnov
 RD_Zesov_3 - Rodinný dům, Žešov
-byt_Tabulovy_vrch_2 - byt, Tabulový vrch
+byt_Italska_3 - byt, Italská
+byt_Italska_4 - byt, Italská
 urbanismus_Dolni_Zleb_4 - urbanismus, Dolní Žleb
 a_byt_Stodulky_4 - byt, Stodůlky
-RD_Zesov_2 - Rodinný dům, Žešov
-byt_Tabulovy_vrch_12 - byt, Tabulový vrch

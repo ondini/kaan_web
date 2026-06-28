@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import platform
 import shutil
 import subprocess
 from typing import Optional
@@ -14,9 +15,17 @@ ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
 
 def convert_pngs_to_webp() -> None:
     """Convert PNG images to WebP and remove original PNG files."""
-    ffmpeg_path = shutil.which("ffmpeg")
-    if not ffmpeg_path:
-        raise RuntimeError("ffmpeg is required but was not found in PATH")
+    is_macos = platform.system() == "Darwin"
+    if is_macos:
+        image_converter = shutil.which("magick") or shutil.which("convert")
+        if not image_converter:
+            raise RuntimeError(
+                "ImageMagick is required on macOS but was not found in PATH"
+            )
+    else:
+        image_converter = shutil.which("ffmpeg")
+        if not image_converter:
+            raise RuntimeError("ffmpeg is required but was not found in PATH")
 
     for folder in sorted(IMAGES_DIR.iterdir()):
         if not folder.is_dir():
@@ -24,18 +33,29 @@ def convert_pngs_to_webp() -> None:
 
         for png_file in sorted(folder.glob("*.png")):
             webp_file = png_file.with_suffix(".webp")
-            cmd = [
-                ffmpeg_path,
-                "-i",
-                str(png_file),
-                "-vf",
-                "scale=2000:-1",
-                "-compression_level",
-                "3",
-                "-q:v",
-                "96",
-                str(webp_file),
-            ]
+            if is_macos:
+                cmd = [
+                    image_converter,
+                    str(png_file),
+                    "-resize",
+                    "2000x",
+                    "-quality",
+                    "96",
+                    str(webp_file),
+                ]
+            else:
+                cmd = [
+                    image_converter,
+                    "-i",
+                    str(png_file),
+                    "-vf",
+                    "scale=2000:-1",
+                    "-compression_level",
+                    "3",
+                    "-q:v",
+                    "96",
+                    str(webp_file),
+                ]
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
                 raise RuntimeError(
