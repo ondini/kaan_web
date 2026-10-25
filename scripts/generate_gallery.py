@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import re
 import platform
 import shutil
 import subprocess
@@ -11,6 +12,14 @@ OUTPUT_FILE = IMAGES_DIR / "gallery.json"
 ORDER_FILE = IMAGES_DIR / "img_order.txt"
 
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+
+
+def natural_sort_key(name: str) -> list:
+    """Sort case-insensitively, comparing digit runs as numbers (1, 3, 11)."""
+    return [
+        int(part) if part.isdigit() else part.casefold()
+        for part in re.split(r"(\d+)", name)
+    ]
 
 
 def convert_pngs_to_webp() -> None:
@@ -133,7 +142,8 @@ def main() -> None:
                 p.name
                 for p in folder.iterdir()
                 if p.is_file() and p.suffix.lower() in ALLOWED_EXTENSIONS
-            ]
+            ],
+            key=natural_sort_key,
         )
         if files:
             categories[folder.name] = files

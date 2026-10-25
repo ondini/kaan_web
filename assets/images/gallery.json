@@ -12,19 +12,19 @@
       "byt_Maly_Brevnov_1.webp",
       "byt_Maly_Brevnov_2.webp",
       "byt_Tabulovy_vrch_1.webp",
-      "byt_Tabulovy_vrch_11.webp",
-      "byt_Tabulovy_vrch_13.webp",
       "byt_Tabulovy_vrch_3.webp",
       "byt_Tabulovy_vrch_4.webp",
-      "byt_Tabulovy_vrch_6.webp"
+      "byt_Tabulovy_vrch_6.webp",
+      "byt_Tabulovy_vrch_11.webp",
+      "byt_Tabulovy_vrch_13.webp"
     ],
     "residential": [
+      "a_RD_Zesov_1.webp",
+      "a_RD_Zesov_3.webp",
       "RD_Dobnerova_1.webp",
       "RD_Dobnerova_2.webp",
       "RD_unicov_1.webp",
-      "RD_unicov_2.webp",
-      "a_RD_Zesov_1.webp",
-      "a_RD_Zesov_3.webp"
+      "RD_unicov_2.webp"
     ],
     "urbanism": [
       "urbanismus_Dolni_Zleb_1.webp",
