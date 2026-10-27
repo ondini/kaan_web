@@ -146,9 +146,143 @@
                 </div>
             </div>
 
-            <div class="main-credit">made by AM © 2026</div>
+            <div class="main-credit">made by AM © 2026 · <a href="#" class="cookie-settings-link" id="cookie-settings-link">Cookies</a></div>
         </main>
     </div>
+
+    <div class="cookie-banner" id="cookie-banner" hidden>
+        <p class="cookie-text">Tento web používá cookies k analýze návštěvnosti (Google Analytics) a měření reklam (Meta). Souhlasíte s jejich použitím?</p>
+        <div class="cookie-actions">
+            <button type="button" class="cookie-button" data-consent="denied">ODMÍTNOUT</button>
+            <button type="button" class="cookie-button" data-consent="granted">SOUHLASÍM</button>
+        </div>
+    </div>
+
+    <script>
+        // Analytics (Google Analytics + Meta Pixel) load only after the visitor consents.
+        const GA_ID = 'G-YS47K5046C';
+        const META_PIXEL_ID = '1121517827129651';
+        const CONSENT_KEY = 'kaan-cookie-consent';
+        let analyticsLoaded = false;
+
+        function readConsent() {
+            try {
+                return localStorage.getItem(CONSENT_KEY);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function saveConsent(value) {
+            try {
+                localStorage.setItem(CONSENT_KEY, value);
+            } catch (e) {
+                // Storage blocked; the banner will simply show again next visit.
+            }
+        }
+
+        function loadAnalytics() {
+            if (analyticsLoaded) {
+                return;
+            }
+            analyticsLoaded = true;
+
+            // Google tag (gtag.js); page views are sent manually on each route change.
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function() { dataLayer.push(arguments); };
+            gtag('js', new Date());
+            gtag('config', GA_ID, { send_page_view: false, page_location: currentPageLocation() });
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+            document.head.appendChild(gaScript);
+
+            // Meta Pixel Code
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            // Page views are sent manually, so turn off the pixel's own history tracking.
+            fbq.disablePushState = true;
+            fbq('init', META_PIXEL_ID);
+        }
+
+        // Reports hash routes as real paths, e.g. "#/project/RD_unicov" -> "/project/RD_unicov".
+        function currentPagePath() {
+            return '/' + window.location.hash.replace(/^#\/?/, '');
+        }
+
+        function currentPageLocation() {
+            return window.location.origin + currentPagePath();
+        }
+
+        function trackPageView() {
+            if (!analyticsLoaded) {
+                return;
+            }
+            // "set" so later automatic events (scroll, clicks) are attributed to this page too.
+            gtag('set', {
+                page_location: currentPageLocation(),
+                page_path: currentPagePath(),
+                page_title: document.title
+            });
+            gtag('event', 'page_view');
+            fbq('track', 'PageView');
+        }
+
+        function deleteAnalyticsCookies() {
+            const hostParts = window.location.hostname.split('.');
+            const domains = ['', window.location.hostname, '.' + hostParts.slice(-2).join('.')];
+            document.cookie.split(';').forEach(cookie => {
+                const name = cookie.split('=')[0].trim();
+                if (/^(_ga|_gid|_gat|_fbp|_fbc)/.test(name)) {
+                    domains.forEach(domain => {
+                        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (domain ? '; domain=' + domain : '');
+                    });
+                }
+            });
+        }
+
+        const cookieBanner = document.getElementById('cookie-banner');
+
+        cookieBanner.querySelectorAll('[data-consent]').forEach(button => {
+            button.addEventListener('click', function() {
+                const value = this.getAttribute('data-consent');
+                const wasLoaded = analyticsLoaded;
+                saveConsent(value);
+                cookieBanner.hidden = true;
+                if (value === 'granted') {
+                    loadAnalytics();
+                    trackPageView();
+                } else if (wasLoaded) {
+                    // Scripts already running can't be unloaded; clear their cookies and reload.
+                    deleteAnalyticsCookies();
+                    window.location.reload();
+                } else {
+                    deleteAnalyticsCookies();
+                }
+            });
+        });
+
+        document.getElementById('cookie-settings-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            cookieBanner.hidden = false;
+        });
+
+        const storedConsent = readConsent();
+        if (storedConsent === 'granted') {
+            loadAnalytics();
+        } else if (storedConsent === 'denied') {
+            // Catches cookies rewritten by the scripts while the page was unloading.
+            deleteAnalyticsCookies();
+        } else {
+            cookieBanner.hidden = false;
+        }
+    </script>
 
     <script>
         const PAGE_KEYS = ['contact', 'info'];
@@ -382,6 +516,11 @@
         }
 
         function handleHash() {
+            route();
+            trackPageView();
+        }
+
+        function route() {
             const hash = window.location.hash.slice(2);
             if (hash.startsWith('project/')) {
                 showProject(decodeURIComponent(hash.slice('project/'.length)));

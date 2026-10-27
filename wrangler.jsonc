@@ -1,0 +1,9 @@
+// Cloudflare Worker serving the static site on kaanarchitekti.cz.
+// The custom domains (kaanarchitekti.cz, www.kaanarchitekti.cz) are attached in the dashboard.
+{
+  "name": "snowy-term-f38d",
+  "compatibility_date": "2026-04-26",
+  "assets": {
+    "directory": "./dist"
+  }
+}
