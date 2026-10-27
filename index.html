@@ -72,6 +72,14 @@
                 <div class="gallery" id="gallery"></div>
             </div>
 
+            <!-- Project Detail Page -->
+            <div id="project-page" class="page-content">
+                <h1 class="project-title" id="project-title"></h1>
+                <dl class="project-info" id="project-info"></dl>
+                <div class="project-description" id="project-description"></div>
+                <div class="gallery" id="project-gallery"></div>
+            </div>
+
             <!-- Contact Page -->
             <div id="contact-page" class="page-content">
                 <div class="contact-container">
@@ -159,7 +167,40 @@
         };
 
         let galleryData = null;
+        let projectsData = {};
         let allImages = [];
+
+        function escapeHtml(text) {
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        // "a_byt_Stodulky_2.webp" -> "byt_Stodulky" (drops the "a_" sort prefix and image number).
+        function projectKeyFromFile(file) {
+            return file
+                .replace(/\.[^.]+$/, '')
+                .replace(/^a_/, '')
+                .replace(/_\d+$/, '');
+        }
+
+        function findProjectImages(projectKey) {
+            const images = [];
+            Object.keys(galleryData.categories).forEach(folder => {
+                galleryData.categories[folder].forEach(file => {
+                    if (projectKeyFromFile(file) === projectKey) {
+                        images.push({ folder, file });
+                    }
+                });
+            });
+            return images;
+        }
+
+        function imageSrc(item) {
+            return 'assets/images/' + item.folder + '/' + encodeURIComponent(item.file);
+        }
 
         function setMainContentTitleState(hasTitle) {
             const mainContent = document.querySelector('.main-content');
@@ -222,18 +263,52 @@
                 return;
             }
             gallery.innerHTML = images.map(item => {
-                const src = 'assets/images/' + item.folder + '/' + encodeURIComponent(item.file);
+                const src = imageSrc(item);
                 const key = item.folder + '/' + item.file;
                 const description = (galleryData.descriptions && galleryData.descriptions[key]) || '';
-                
-                let html = '<div class="gallery-item">';
+                const projectKey = projectKeyFromFile(item.file);
+
+                let html = '<a class="gallery-item" href="#/project/' + encodeURIComponent(projectKey) + '">';
                 html += '<img src="' + src + '" alt="Project" class="gallery-image">';
                 if (description) {
                     html += '<div class="gallery-description">' + description + '</div>';
                 }
-                html += '</div>';
+                html += '</a>';
                 return html;
             }).join('');
+        }
+
+        function showProject(projectKey) {
+            document.querySelectorAll('.page-content').forEach(p => {
+                p.classList.remove('active');
+            });
+            document.getElementById('project-page').classList.add('active');
+            setMainContentTitleState(true);
+            document.querySelector('.main-content').scrollTop = 0;
+
+            const images = galleryData ? findProjectImages(projectKey) : [];
+            const folder = images.length ? images[0].folder : null;
+            const categoryKey = Object.keys(CATEGORY_MAP).find(key => CATEGORY_MAP[key] === folder);
+            setActiveNavLink('.nav-link', null);
+            setActiveNavLink('.project-link', categoryKey ? { attr: 'category', value: categoryKey } : null);
+            setProjectsTitleActive(false);
+
+            const project = projectsData[projectKey] || {};
+            document.getElementById('project-title').textContent = project.title || '';
+
+            const info = project.info || {};
+            document.getElementById('project-info').innerHTML = Object.keys(info).map(label =>
+                '<div class="project-info-row"><dt>' + escapeHtml(label) + ':</dt><dd>' + escapeHtml(info[label]) + '</dd></div>'
+            ).join('');
+
+            const paragraphs = project.description || [];
+            const description = document.getElementById('project-description');
+            description.innerHTML = paragraphs.map(text => '<p>' + escapeHtml(text) + '</p>').join('');
+            description.classList.toggle('is-hidden', paragraphs.length === 0);
+
+            document.getElementById('project-gallery').innerHTML = images.map(item =>
+                '<div class="gallery-item"><img src="' + imageSrc(item) + '" alt="' + escapeHtml(project.title || 'Project') + '" class="gallery-image"></div>'
+            ).join('');
         }
 
         function showGallery(filterKey) {
@@ -308,6 +383,10 @@
 
         function handleHash() {
             const hash = window.location.hash.slice(2);
+            if (hash.startsWith('project/')) {
+                showProject(decodeURIComponent(hash.slice('project/'.length)));
+                return;
+            }
             if (PAGE_KEYS.includes(hash)) {
                 showPage(hash);
                 return;
@@ -422,10 +501,15 @@
             });
         }
 
-        fetch('assets/images/gallery.json')
-            .then(response => response.json())
-            .then(data => {
+        Promise.all([
+            fetch('assets/images/gallery.json').then(response => response.json()),
+            fetch('assets/projects.json')
+                .then(response => response.json())
+                .catch(() => ({}))
+        ])
+            .then(([data, projects]) => {
                 galleryData = data;
+                projectsData = projects;
                 allImages = buildAllImages();
                 handleHash();
             })

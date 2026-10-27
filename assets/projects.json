@@ -1,0 +1,107 @@
+{
+  "byt_Tabulovy_vrch": {
+    "title": "Interiér bytu, Olomouc – Tabulový vrch",
+    "info": {
+      "Architekt": "Anastázie Můčková",
+      "Lokalita": "Olomouc, Tabulový vrch",
+      "Studie": "2024",
+      "Realizace": "2025"
+    },
+    "description": []
+  },
+  "byt_Italska": {
+    "title": "Interiér bytu - renovace, Praha – Italská",
+    "info": {
+      "Architekt": "Anastázie Můčková",
+      "Lokalita": "Praha, Italská",
+      "Studie": "2025",
+      "Realizace": "2025"
+    },
+    "description": [
+      "Rekonstrukce bytu v ulici Italská je hledáním rovnováhy mezi autentickým duchem staroměstského bydlení a současným pojetím interiéru. Cílem bylo zachovat charakter původního prostoru a zároveň mu vdechnout novou energii, lehkost a maximální komfort pro každodenní život.",
+      "Interiér propojuje přirozené světlo, výrazné textury, teplé tóny dřeva a promyšlené barevné akcenty. Materiálový koncept se přirozeně prolíná jednotlivými místnostmi a vytváří harmonický celek, ve kterém má každý prostor svůj vlastní charakter, aniž by ztrácel návaznost na zbytek bytu."
+    ]
+  },
+  "byt_Stodulky": {
+    "title": "Interiér bytu, Praha – Stodůlky",
+    "info": {
+      "Architekt": "Anastázie Můčková",
+      "Lokalita": "Praha, Stodůlky",
+      "Studie": "2025"
+    },
+    "description": [
+      "Návrh interiéru bytu ve Stodůlkách staví na jednoduchosti, přirozeném světle a harmonickém propojení jednotlivých obytných zón. Kuchyň, jídelna a obývací část tvoří jeden vzdušný celek, který podporuje plynulé fungování prostoru i každodenní život.",
+      "Čisté linie a střídmá materiálová paleta vytvářejí klidný základ interiéru, který doplňuje betonová textura a výrazný tmavě modrý jídelní stůl. Kontrastní akcent dodává prostoru osobitost, aniž by narušoval jeho vizuální jednoduchost.",
+      "Výsledkem je nadčasové bydlení, ve kterém se propojuje funkčnost s estetikou a minimalistický přístup s příjemnou atmosférou domova."
+    ]
+  },
+  "byt_Maly_Brevnov": {
+    "title": "Interiér bytu, Praha – Malý Břevnov",
+    "info": {
+      "Architekt": "Anastázie Můčková",
+      "Lokalita": "Praha, Malý Břevnov",
+      "Studie": "2022",
+      "Realizace": "2023"
+    },
+    "description": [
+      "Návrh interiéru malého bytu staví na maximálním využití prostoru a promyšleném úložném řešení. Minimalistický design doplňuje kombinace šedých odstínů a tmavého dřeva, která interiéru dodává eleganci, hloubku a útulnou atmosféru.",
+      "Důraz na funkčnost, čisté linie a vyváženou materiálovou paletu umožňuje vytvořit komfortní a vizuálně ucelené bydlení i na omezené ploše. Každý detail má své místo a přispívá k celkovému charakteru interiéru."
+    ]
+  },
+  "stodola_Jivova": {
+    "title": "Revitalizace stodoly, Jívová",
+    "info": {
+      "Architekt": "Anastázie Můčková",
+      "Lokalita": "Jívová",
+      "Studie": "2024",
+      "Realizace": "2025"
+    },
+    "description": []
+  },
+  "urbanismus_Dolni_Zleb": {
+    "title": "Urbanismus, Dolní Žleb",
+    "info": {
+      "Tým": "Anastázie Můčková, Michal Kocan, Zuzana Lekešová",
+      "Lokalita": "Dolní Žleb",
+      "Studie": "2024",
+      "DSP": "2025"
+    },
+    "description": [
+      "Návrh souboru drobných objektů vychází z principu fragmentace hmoty a citlivého měřítka, které respektuje charakter okolní krajiny. Nízké objemy s výrazně skloněnými střechami přirozeně navazují na terén i horizont lesa, zatímco vertikální dřevěný obklad podporuje jejich vizuální propojení s prostředím.",
+      "Důraz na přirozené materiály, promyšlený detail a transparentnost vytváří plynulý dialog mezi architekturou a okolní vegetací. Otevřený parter propojuje interiér s exteriérem a umožňuje vnímat krajinu jako nedílnou součást prostoru."
+    ]
+  },
+  "RD_Dobnerova": {
+    "title": "Rodinný dům - renovace, Olomouc – Dobnerova",
+    "info": {
+      "Tým": "Anastázie Můčková, Michal Kocan",
+      "Lokalita": "Olomouc, Dobnerova",
+      "Studie": "2025"
+    },
+    "description": [
+      "Návrh renovace rodinného domu v Olomouci vychází z důkladného poznání stávající stavby, jejího charakteru, proporcí a vztahu k okolí. Cílem návrhu není radikální změna, ale citlivá kultivace původní architektury a její přirozené propojení se současnými požadavky na bydlení. Nové řešení přináší čistý, nadčasový výraz, který respektuje identitu domu a zároveň zvyšuje jeho funkčnost, komfort a kvalitu každodenního života."
+    ]
+  },
+  "RD_Zesov": {
+    "title": "Rodinný dům, Žešov",
+    "info": {
+      "Architekt": "Anastázie Můčková",
+      "Lokalita": "Žešov",
+      "Studie": "2025"
+    },
+    "description": []
+  },
+  "RD_unicov": {
+    "title": "Rodinný dům, Uničov",
+    "info": {
+      "Architekt": "Anastázie Můčková",
+      "Lokalita": "Uničov",
+      "Studie": "2024"
+    },
+    "description": [
+      "Návrh jednopodlažního rodinného domu vychází z jednoduché geometrie, čistých linií a důrazu na funkčnost. Obdélníkový půdorys se sedlovou střechou přirozeně rozděluje dispozici na denní a noční část a vytváří přehledné a komfortní prostředí pro každodenní život.",
+      "Architektonický výraz domu staví na střídmé materiálové paletě, kterou doplňuje kontrastní vstupní část obložená dřevem. Velkoformátová okna otevírají interiér směrem do zahrady a stírají hranici mezi vnitřním a venkovním prostorem.",
+      "Nedílnou součástí návrhu je terasa plynule navazující na hlavní hmotu domu. Její zastřešení tvoří samotná střecha domu, díky čemuž terasa působí jako přirozené pokračování obytného prostoru."
+    ]
+  }
+}

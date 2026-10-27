@@ -19,8 +19,7 @@
     --color-accent-light: #e57d67;
     --color-scrollbar: #c0c0c0;
     --color-scrollbar-hover: #a0a0a0;
-    --font-family: 'Inter', sans-serif;
-    --sidebar-padding: 60px 60px;
+    --font-family: 'Inter', sans-serif;    --sidebar-padding: 60px 60px;
     --main-padding: 60px 60px;
     --logo-size: 240px;
     --logo-margin-bottom: 60px;
@@ -327,7 +326,10 @@ body {
 }
 
 .gallery-item {
+    display: block;
     width: 100%;
+    color: inherit;
+    text-decoration: none;
 }
 
 .gallery-image {
@@ -348,6 +350,46 @@ body {
 
 .gallery-item:hover .gallery-description {
     opacity: 1;
+}
+
+/* Project Detail Page Styles */
+.project-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--contact-title-gap);
+}
+
+.project-info {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.project-info-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 250px) 1fr;
+    column-gap: 16px;
+}
+
+.project-info dd {
+    margin: 0;
+}
+
+.project-description {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 48px;
+}
+
+.project-description p + p {
+    margin-top: var(--contact-text-gap);
+}
+
+.project-description.is-hidden {
+    display: none;
 }
 
 /* Contact Page Styles */
@@ -592,6 +634,14 @@ body {
 
     .email {
         font-size: 24px;
+    }
+
+    .project-title {
+        padding-right: 40px;
+    }
+
+    .project-info-row {
+        grid-template-columns: 120px 1fr;
     }
 
     .main-content {
