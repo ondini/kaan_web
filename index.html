@@ -511,12 +511,50 @@
             return images;
         }
 
+        // The scrolling column is .main-content, not the window, so the browser can't restore
+        // its position on Back. Remember it per route and restore it on Back/Forward.
+        const scrollPositions = {};
+        let currentRoute = window.location.hash;
+        let isLinkNavigation = false;
+
         function updateHash(value) {
+            isLinkNavigation = true;
             window.location.hash = value ? '#/' + value : '';
         }
 
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('a[href^="#/"]')) {
+                isLinkNavigation = true;
+            }
+        }, true);
+
+        function restoreScroll(position) {
+            const mainContent = document.querySelector('.main-content');
+            const pending = Array.from(mainContent.querySelectorAll('.page-content.active img'))
+                .filter(img => !img.complete)
+                .map(img => new Promise(resolve => {
+                    img.addEventListener('load', resolve, { once: true });
+                    img.addEventListener('error', resolve, { once: true });
+                }));
+            // Wait for images so the column is tall enough, but don't hang on a slow one.
+            Promise.race([
+                Promise.all(pending),
+                new Promise(resolve => setTimeout(resolve, 2000))
+            ]).then(() => {
+                mainContent.scrollTop = position;
+            });
+        }
+
         function handleHash() {
+            const restoring = !isLinkNavigation;
+            isLinkNavigation = false;
+            scrollPositions[currentRoute] = document.querySelector('.main-content').scrollTop;
+            currentRoute = window.location.hash;
+
             route();
+            if (restoring && scrollPositions[currentRoute]) {
+                restoreScroll(scrollPositions[currentRoute]);
+            }
             trackPageView();
         }
 
