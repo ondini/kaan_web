@@ -313,12 +313,12 @@
                 .replace(/"/g, '&quot;');
         }
 
-        // "a_byt_Stodulky_2.webp" -> "byt_Stodulky" (drops the "a_" sort prefix and image number).
-        // A file also belongs to a projects.json key it starts with, so "skolka_ext_1" -> "skolka".
+        // "a_byt_Stodulky_2.webp" -> "byt_Stodulky" (drops sort prefixes like "a_"/"a2_" and image number).
+        // A file also belongs to a projects.json key it starts with, so "a2_skolka_int_1" -> "skolka".
         function projectKeyFromFile(file) {
             const stem = file
                 .replace(/\.[^.]+$/, '')
-                .replace(/^a_/, '');
+                .replace(/^a\d*_/, '');
             const matchingKey = Object.keys(projectsData)
                 .filter(key => stem === key || stem.startsWith(key + '_'))
                 .sort((a, b) => b.length - a.length)[0];

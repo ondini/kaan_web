@@ -12,6 +12,7 @@ OUTPUT_FILE = IMAGES_DIR / "gallery.json"
 ORDER_FILE = IMAGES_DIR / "img_order.txt"
 
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+SORT_PREFIX = re.compile(r"^a\d*_")
 
 
 def natural_sort_key(name: str) -> list:
@@ -99,6 +100,11 @@ def read_order_file() -> list[tuple[str, str]]:
     return entries
 
 
+def strip_sort_prefix(stem: str) -> str:
+    """Drop ordering prefixes like "a_" or "a2_" so "a2_skolka_int_1" -> "skolka_int_1"."""
+    return SORT_PREFIX.sub("", stem)
+
+
 def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> Optional[str]:
     entry_stem = Path(entry).stem
 
@@ -113,6 +119,12 @@ def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> Optio
                 for file in categories[folder]
                 if Path(file).stem == filename or Path(file).stem == filename_stem
             ]
+            if not matches:
+                matches = [
+                    file
+                    for file in categories[folder]
+                    if strip_sort_prefix(Path(file).stem) == strip_sort_prefix(filename_stem)
+                ]
             if len(matches) == 1:
                 return f"{folder}/{matches[0]}"
         return None
@@ -125,6 +137,14 @@ def normalize_order_entry(entry: str, categories: dict[str, list[str]]) -> Optio
         for file in files:
             if Path(file).stem == entry or Path(file).stem == entry_stem:
                 matches.append(f"{folder}/{file}")
+
+    # Fall back to ignoring sort prefixes, so renaming files to reorder them
+    # doesn't require updating img_order.txt.
+    if not matches:
+        for folder, files in categories.items():
+            for file in files:
+                if strip_sort_prefix(Path(file).stem) == strip_sort_prefix(entry_stem):
+                    matches.append(f"{folder}/{file}")
 
     if len(matches) == 1:
         return matches[0]
