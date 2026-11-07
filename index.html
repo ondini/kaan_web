@@ -75,6 +75,7 @@
             <!-- Project Detail Page -->
             <div id="project-page" class="page-content">
                 <h1 class="project-title" id="project-title"></h1>
+                <p class="project-subtitle" id="project-subtitle"></p>
                 <dl class="project-info" id="project-info"></dl>
                 <div class="project-description" id="project-description"></div>
                 <div class="gallery" id="project-gallery"></div>
@@ -313,11 +314,15 @@
         }
 
         // "a_byt_Stodulky_2.webp" -> "byt_Stodulky" (drops the "a_" sort prefix and image number).
+        // A file also belongs to a projects.json key it starts with, so "skolka_ext_1" -> "skolka".
         function projectKeyFromFile(file) {
-            return file
+            const stem = file
                 .replace(/\.[^.]+$/, '')
-                .replace(/^a_/, '')
-                .replace(/_\d+$/, '');
+                .replace(/^a_/, '');
+            const matchingKey = Object.keys(projectsData)
+                .filter(key => stem === key || stem.startsWith(key + '_'))
+                .sort((a, b) => b.length - a.length)[0];
+            return matchingKey || stem.replace(/_\d+$/, '');
         }
 
         function findProjectImages(projectKey) {
@@ -429,6 +434,9 @@
 
             const project = projectsData[projectKey] || {};
             document.getElementById('project-title').textContent = project.title || '';
+            const subtitle = document.getElementById('project-subtitle');
+            subtitle.textContent = project.subtitle || '';
+            subtitle.classList.toggle('is-hidden', !project.subtitle);
 
             const info = project.info || {};
             document.getElementById('project-info').innerHTML = Object.keys(info).map(label =>

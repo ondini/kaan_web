@@ -360,6 +360,17 @@ body {
     margin-bottom: var(--contact-title-gap);
 }
 
+.project-subtitle {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-top: calc(var(--contact-title-gap) * -0.6);
+    margin-bottom: var(--contact-title-gap);
+}
+
+.project-subtitle.is-hidden {
+    display: none;
+}
+
 .project-info {
     font-size: 16px;
     line-height: 1.8;
