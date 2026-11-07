@@ -2,10 +2,12 @@ a_byt_Stodulky_1 - byt, Stodůlky
 urbanismus_Dolni_Zleb_1 - urbanismus, Dolní Žleb
 byt_Tabulovy_vrch_13  - byt, Tabulový vrch
 RD_unicov_1 - Rodinný dům, Uničov
+skolka_int_1 - Mateřská škola, Rudná
 byt_Maly_Brevnov_2 - byt, Malý Břevnov
 RD_Dobnerova_1 - Rodinný dům - renovace, Dobnerova
 byt_Italska_1 - byt - renovace, Italská
 byt_Tabulovy_vrch_11 - byt, Tabulový vrch
+skolka_ext_1 - Matřská škola, Rudná
 a_RD_Zesov_1 - Rodinný dům, Žešov
 a_byt_Stodulky_2 - byt, Stodůlky
 byt_Tabulovy_vrch_1 - byt, Tabulový vrch
@@ -13,6 +15,7 @@ byt_Italska_4 - byt - renovace, Italská
 urbanismus_Dolni_Zleb_2 - urbanismus, Dolní Žleb
 byt_Italska_2 - byt - renovace, Italská
 RD_Dobnerova_2 - Rodinný dům - renovace, Dobnerova
+skolka_int_2 - Matřská škola, Rudná
 byt_Tabulovy_vrch_3 - byt, Tabulový vrch
 urbanismus_Dolni_Zleb_3 - urbanismus, Dolní Žleb
 byt_Tabulovy_vrch_6 - byt, Tabulový vrch
@@ -22,6 +25,7 @@ RD_Dobnerova_3 - Rodinný dům, Dobnerova
 byt_Maly_Brevnov_1 - byt, Malý Břevnov
 a_RD_Zesov_3 - Rodinný dům, Žešov
 byt_Italska_3 - byt - renovace, Italská
+skolka_ext_2 - Mateřská škola, Rudná
 byt_Tabulovy_vrch_4 - byt, Tabulový vrch
 urbanismus_Dolni_Zleb_4 - urbanismus, Dolní Žleb
 a_byt_Stodulky_4 - byt, Stodůlky
